@@ -2,6 +2,31 @@
   "lastUpdated": "2026-11-07",
   "categories": [
     {
+      "name": "General",
+      "items": [
+        {
+          "text": "Sleep quantity",
+          "status": "running",
+          "note": "At least 8 hours"
+        },
+        {
+          "text": "Sleep efficiency",
+          "status": "running",
+          "note": "When in bed, asleep >85% of the time"
+        },
+        {
+          "text": "Sleep regularity",
+          "status": "running",
+          "note": "Same bed and wake time within a 30-minute window, every day"
+        },
+        {
+          "text": "Sleep timing",
+          "status": "running",
+          "note": "Align with personal chronotype as best as possible (personally a neutral chronotype)"
+        }
+      ]
+    },
+    {
       "name": "Phase 1 (0-8 hours after waking)",
       "items": [
         {
@@ -56,6 +81,11 @@
         {
           "text": "Red screen filter on phone in the evening",
           "status": "not-started"
+        },
+        {
+          "text": "Worry journal",
+          "status": "running",
+          "note": "1-2 hours before bed, write down all concerns/worries"
         }
       ]
     },
@@ -64,11 +94,31 @@
       "items": [
         {
           "text": "Ideally, sleep during this phase",
-          "status": "running",
-          "note": "At least 8 hours, high quality and regularity"
+          "status": "running"
         },
         {
           "text": "If you choose to work instead, work in an environment as dimly lit as possible while still being able to do work",
+          "status": "running"
+        },
+        {
+          "text": "Remove all clock faces from bedroom",
+          "status": "running"
+        }
+      ]
+    },
+    {
+      "name": "Naps",
+      "items": [
+        {
+          "text": "No naps when not needed",
+          "status": "running"
+        },
+        {
+          "text": "If needed, limit to 20 minutes",
+          "status": "running"
+        },
+        {
+          "text": "Not too soon before sleep",
           "status": "running"
         }
       ]
@@ -77,13 +127,23 @@
       "name": "Tools",
       "items": [
         {
-          "text": "Naps under 90 minutes",
-          "status": "running",
-          "note": "Only when needed"
-        },
-        {
           "text": "NSDR to wind down",
           "status": "running"
+        },
+        {
+          "text": "If underslept, do nothing",
+          "status": "running",
+          "note": "No changing bedtime, extra naps, etc. in order to get back on track"
+        },
+        {
+          "text": "Consistent wind-down routine",
+          "status": "running",
+          "note": "Regardless of what it is"
+        },
+        {
+          "text": "Sleep hygiene",
+          "status": "running",
+          "note": "In bed to sleep only"
         }
       ]
     }
