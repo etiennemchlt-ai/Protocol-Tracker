@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-09-07",
+  "lastUpdated": "2026-11-07",
   "categories": [
     {
-      "name": "Light",
+      "name": "Phase 1 (0-8 hours after waking)",
       "items": [
         {
           "text": "Morning sunlight",
@@ -15,13 +15,62 @@
           "note": "Fallback only, much weaker than sunlight"
         },
         {
+          "text": "Bright working environment",
+          "status": "running"
+        },
+        {
+          "text": "Do deep focus work in this phase",
+          "status": "running"
+        },
+        {
+          "text": "Caffeine and cold exposure done in this phase",
+          "status": "running"
+        }
+      ]
+    },
+    {
+      "name": "Phase 2 (8-16 hours after waking)",
+      "items": [
+        {
+          "text": "Do easier tasks during this phase of the day if possible",
+          "status": "running"
+        },
+        {
+          "text": "Begin dimming lights as the day goes on",
+          "status": "running"
+        },
+        {
           "text": "View the sunset",
           "status": "running",
-          "note": "Within about an hour of sunset"
+          "note": "If possible"
         },
-        { "text": "Minimize lights around 8pm", "status": "running" },
-        { "text": "Keep evening lights low, never overhead", "status": "running" },
-        { "text": "Red screen filter on phone in the evening", "status": "not-started" }
+        {
+          "text": "Minimize lights",
+          "status": "running",
+          "note": "Around 8pm"
+        },
+        {
+          "text": "Keep evening lights low, never overhead",
+          "status": "running"
+        },
+        {
+          "text": "Red screen filter on phone in the evening",
+          "status": "not-started"
+        }
+      ]
+    },
+    {
+      "name": "Phase 3 (16-24 hours after waking)",
+      "items": [
+        {
+          "text": "Ideally, sleep during this phase",
+          "status": "running",
+          "note": "At least 8 hours, high quality and regularity"
+        },
+        {
+          "text": "If you choose to work instead, work in an environment as dimly lit as possible while still being able to do work",
+          "status": "running"
+        }
       ]
     },
     {
@@ -32,7 +81,10 @@
           "status": "running",
           "note": "Only when needed"
         },
-        { "text": "NSDR to wind down", "status": "running" }
+        {
+          "text": "NSDR to wind down",
+          "status": "running"
+        }
       ]
     }
   ]

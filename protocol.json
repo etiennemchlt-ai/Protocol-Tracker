@@ -1,14 +1,15 @@
 {
-  "lastUpdated": "2026-11-04",
+  "lastUpdated": "2026-11-07",
   "categories": [
     {
       "name": "Foundations",
       "subtitle": "always on",
       "items": [
         {
-          "text": "Prioritize sleep",
+          "text": "Optimize Sleep and Circadian Rhythm",
           "status": "running",
-          "note": "At least 8 hours, high quality and regularity"
+          "note": "See sleep section",
+          "noteLink": "#sleep-panel"
         },
         {
           "text": "Low sugar diet",
@@ -86,37 +87,6 @@
         {
           "text": "Study alone",
           "status": "running"
-        }
-      ]
-    },
-    {
-      "name": "Circadian Anchoring",
-      "items": [
-        {
-          "text": "Phase 1 (0-8 hours after waking)",
-          "status": "running",
-          "subitems": [
-            "Morning sunlight",
-            "Bright working environment",
-            "Do deep focus work in this phase",
-            "Caffeine and cold exposure done in this phase"
-          ]
-        },
-        {
-          "text": "Phase 2 (8-16 hours after waking)",
-          "status": "running",
-          "subitems": [
-            "Do easier tasks during this phase of the day if possible",
-            "Begin dimming lights as the day goes on"
-          ]
-        },
-        {
-          "text": "Phase 3 (16-24 hours after waking)",
-          "status": "running",
-          "subitems": [
-            "Ideally, sleep during this phase",
-            "If you choose to work instead, work in an environment as dimly lit as possible while still being able to do work"
-          ]
         }
       ]
     },

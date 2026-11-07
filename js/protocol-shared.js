@@ -16,6 +16,31 @@ const STATUS_LABEL = {
 const PHASE_ORDER = ['before', 'during', 'after'];
 const PHASE_LABEL = { before: 'Before', during: 'During', after: 'After' };
 
+// An item's note, as plain text — or, when the item has a "noteLink"
+// (e.g. "#sleep-panel"), as a link that opens that dropdown and scrolls
+// to it.
+function renderNote(item) {
+  const note = document.createElement('div');
+  note.className = 'protocol-item-note';
+  if (!item.noteLink) {
+    note.textContent = item.note;
+    return note;
+  }
+  const link = document.createElement('a');
+  link.className = 'protocol-note-link';
+  link.href = item.noteLink;
+  link.textContent = item.note;
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(item.noteLink);
+    if (!target) return;
+    e.preventDefault();
+    if (target.tagName === 'DETAILS') target.open = true;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  note.appendChild(link);
+  return note;
+}
+
 export function fmtUpdated(iso) {
   const d = new Date(`${iso}T00:00:00`);
   if (Number.isNaN(d.getTime())) return iso;
@@ -52,16 +77,10 @@ function renderItem(item) {
   // The dot alone carries Running/Not started/Dropped — note is just
   // supplementary detail (a dropped reason, a dosage, whatever), shown as
   // small text whenever present, on any item regardless of status.
-  if (item.note) {
-    const noteLine = document.createElement('div');
-    noteLine.className = 'protocol-item-note';
-    noteLine.textContent = item.note;
-    body.appendChild(noteLine);
-  }
+  if (item.note) body.appendChild(renderNote(item));
 
   // An item's optional "subitems" list breaks it into its own bullet
-  // points, in place of a single note — currently only Circadian
-  // Anchoring's phases use this.
+  // points, in place of a single note.
   if (item.subitems && item.subitems.length) {
     const subList = document.createElement('ul');
     subList.className = 'protocol-subitem-list';
@@ -143,12 +162,7 @@ function renderLearnedItem(item) {
   text.textContent = item.text;
   li.appendChild(text);
 
-  if (item.note && item.status !== 'dropped') {
-    const note = document.createElement('div');
-    note.className = 'protocol-item-note';
-    note.textContent = item.note;
-    li.appendChild(note);
-  }
+  if (item.note && item.status !== 'dropped') li.appendChild(renderNote(item));
 
   if (item.subitems && item.subitems.length) {
     const subList = document.createElement('ul');
