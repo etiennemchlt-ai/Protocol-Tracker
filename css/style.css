@@ -437,6 +437,14 @@ details[open] > .version-summary::before {
   color: var(--text-muted);
 }
 
+/* Faint underline on one word of a note (see renderNote's noteUnderline). */
+.protocol-note-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 3px;
+}
+
 .protocol-note-link {
   color: inherit;
   text-decoration: underline;

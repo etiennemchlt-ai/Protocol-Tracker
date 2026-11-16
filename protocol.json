@@ -155,7 +155,8 @@
         {
           "text": "Cold exposure",
           "status": "running",
-          "note": "Every morning. Uncomfortable but safe for 1-5 minutes"
+          "note": "Every morning. Personally do an uncomfortable temp for 3-5 minutes",
+          "noteUnderline": "Personally"
         },
         {
           "text": "NSDR",

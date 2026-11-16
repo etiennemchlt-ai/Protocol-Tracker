@@ -182,7 +182,8 @@
         {
           "text": "Cold exposure",
           "status": "dropped",
-          "note": "Uncomfortable but safe for 1-5 minutes"
+          "note": "Personally do an uncomfortable temp for 3-5 minutes",
+          "noteUnderline": "Personally"
         },
         {
           "text": "NSDR",

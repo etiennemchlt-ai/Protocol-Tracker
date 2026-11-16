@@ -18,12 +18,21 @@ const PHASE_LABEL = { before: 'Before', during: 'During', after: 'After' };
 
 // An item's note, as plain text — or, when the item has a "noteLink"
 // (e.g. "#sleep-panel"), as a link that opens that dropdown and scrolls
-// to it.
+// to it. An optional "noteUnderline" (a word or phrase inside the note)
+// gets a faint underline, e.g. "Personally".
 function renderNote(item) {
   const note = document.createElement('div');
   note.className = 'protocol-item-note';
   if (!item.noteLink) {
-    note.textContent = item.note;
+    const at = item.noteUnderline ? item.note.indexOf(item.noteUnderline) : -1;
+    if (at < 0) {
+      note.textContent = item.note;
+      return note;
+    }
+    const mark = document.createElement('span');
+    mark.className = 'protocol-note-underline';
+    mark.textContent = item.noteUnderline;
+    note.append(item.note.slice(0, at), mark, item.note.slice(at + item.noteUnderline.length));
     return note;
   }
   const link = document.createElement('a');
