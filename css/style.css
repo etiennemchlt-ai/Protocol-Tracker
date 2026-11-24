@@ -139,8 +139,8 @@ body {
    ================================================================== */
 
 #versions-column {
-  flex: 0 0 340px;
-  width: 340px;
+  flex: 0 0 400px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -202,8 +202,8 @@ details[open] > .version-summary::before {
    ================================================================== */
 
 #protocol-column {
-  flex: 0 0 400px;
-  width: 400px;
+  flex: 0 0 340px;
+  width: 340px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -776,4 +776,207 @@ details[open] > .version-summary::before {
     align-items: flex-start;
     gap: 4px;
   }
+}
+
+/* ==================================================================
+   Protocol map (far-left column, see js/protocol.js). Rows are
+   protocols, columns are versions. Dots: gray = doing it, no change;
+   green = added; blue = changed; red ✕ = dropped; hollow = never used.
+   Dots are big and react on hover so people try hovering them; the
+   note shows in .pmap-tip. Rows not running in the latest version are
+   dimmed.
+   ================================================================== */
+
+.map-head {
+  padding: 18px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.map-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.map-caption { margin: 0; }
+
+#protocol-map {
+  padding: 4px 14px 18px 20px;
+}
+
+.pmap {
+  width: 100%;
+  max-width: 560px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.pmap-vcol { width: 40px; }
+
+.pmap-vhead {
+  padding: 10px 0 6px;
+  text-align: center;
+  font-weight: 400;
+  vertical-align: bottom;
+}
+
+.pmap-vlabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pmap-vdays {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.pmap-cat th {
+  padding: 16px 0 6px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.pmap-row th,
+.pmap-row td {
+  border-top: 1px solid var(--border);
+}
+
+.pmap-cat + .pmap-row th,
+.pmap-cat + .pmap-row td {
+  border-top: none;
+}
+
+.pmap-row:hover th,
+.pmap-row:hover td {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.pmap-name {
+  padding: 7px 8px 7px 0;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.pmap-row.is-inactive .pmap-name {
+  color: var(--text-muted);
+}
+
+.pmap-cell {
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* The button is a 30px hit area; the visible dot is its ::before. */
+.pmap-dot {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.pmap-dot::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: #6f7689;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.pmap-dot.kind-added::before {
+  background: var(--good);
+  box-shadow: 0 0 7px 0 rgba(47, 191, 63, 0.55);
+}
+
+.pmap-dot.kind-changed::before {
+  background: var(--cat-1);
+  box-shadow: 0 0 7px 0 rgba(110, 168, 240, 0.55);
+}
+
+.pmap-dot.kind-never::before {
+  background: transparent;
+  border: 2px solid #4d5366;
+}
+
+/* Dropped: a red ✕ instead of a dot. */
+.pmap-dot.kind-dropped::before {
+  inset: 7px;
+  border-radius: 0;
+  background:
+    linear-gradient(45deg, transparent 43%, var(--bad) 43%, var(--bad) 57%, transparent 57%),
+    linear-gradient(-45deg, transparent 43%, var(--bad) 43%, var(--bad) 57%, transparent 57%);
+}
+
+.pmap-dot:hover::before,
+.pmap-dot:focus-visible::before,
+.pmap-dot.is-pinned::before {
+  transform: scale(1.3);
+}
+
+.pmap-dot:not(.kind-dropped):hover::before,
+.pmap-dot:not(.kind-dropped):focus-visible::before,
+.pmap-dot.is-pinned:not(.kind-dropped)::before {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14);
+}
+
+.pmap-dot:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.35);
+  outline-offset: -2px;
+}
+
+.pmap-tip {
+  position: absolute;
+  z-index: 50;
+  max-width: 260px;
+  padding: 9px 11px 10px;
+  background: #171b27;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.pmap-tip[hidden] { display: none; }
+
+.pmap-tip-head {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pmap-tip-head.kind-added { color: var(--good); }
+.pmap-tip-head.kind-changed { color: var(--cat-1); }
+.pmap-tip-head.kind-dropped { color: var(--bad); }
+
+.pmap-tip-name {
+  margin-top: 2px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pmap-tip .protocol-item-note {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
 }

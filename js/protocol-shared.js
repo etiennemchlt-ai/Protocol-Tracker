@@ -24,7 +24,7 @@ const PHASE_LABEL = { before: 'Before', during: 'During', after: 'After' };
 // (e.g. "#sleep-panel"), as a link that opens that dropdown and scrolls
 // to it. An optional "noteUnderline" (a word or phrase inside the note)
 // gets a faint underline, e.g. "Personally".
-function renderNote(item) {
+export function renderNote(item) {
   const note = document.createElement('div');
   note.className = 'protocol-item-note';
   if (!item.noteLink) {

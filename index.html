@@ -25,41 +25,18 @@
   </header>
 
   <div id="shell">
-    <!-- Protocol versions, read top to bottom. Protocol V1 (base protocol) is the
-         full list from Day 0 (protocol-base.json). Each later version lists only
-         what changed from the one before, with the reason in words
-         (protocol-v2.json, protocol-v3.json). See js/protocol.js. -->
+    <!-- Protocol map: every protocol (rows) across every version (columns).
+         Built from protocol-base.json (V1, the full Day 0 list) and the
+         change lists protocol-v2.json, protocol-v3.json. Hover or tap a dot
+         for its note. See js/protocol.js. -->
     <nav id="versions-column" aria-label="Protocol versions">
-      <details class="version-panel secondary-panel">
-        <summary class="version-summary">
-          <span class="version-title">Protocol V1 · base protocol</span>
-          <span class="version-days">Days 0-30</span>
-        </summary>
-        <div class="protocol-body version-body">
-          <div class="personal-caption base-caption">Protocols from Huberman Lab</div>
-          <div id="base-body"></div>
+      <section class="secondary-panel map-panel">
+        <div class="map-head">
+          <h2 class="map-title">Protocol Versions</h2>
+          <div class="personal-caption map-caption">V1: protocols from Huberman Lab</div>
         </div>
-      </details>
-
-      <details class="version-panel secondary-panel">
-        <summary class="version-summary">
-          <span class="version-title">Protocol V2 · changes</span>
-          <span class="version-days">Days 30-60</span>
-        </summary>
-        <div class="protocol-body version-body">
-          <div id="v2-body"></div>
-        </div>
-      </details>
-
-      <details class="version-panel secondary-panel">
-        <summary class="version-summary">
-          <span class="version-title">Protocol V3 · changes</span>
-          <span class="version-days">Days 60-90</span>
-        </summary>
-        <div class="protocol-body version-body">
-          <div id="v3-body"></div>
-        </div>
-      </details>
+        <div id="protocol-map"></div>
+      </section>
     </nav>
 
     <main id="metrics-area" aria-label="90-Day Focus Metrics">
