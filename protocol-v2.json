@@ -1,0 +1,56 @@
+{
+  "lastUpdated": "2026-11-24",
+  "categories": [
+    {
+      "name": "Personally Implemented",
+      "items": [
+        {
+          "change": "added",
+          "text": "Dopamine Detox",
+          "status": "running",
+          "note": "See day 22 for more info"
+        },
+        {
+          "change": "added",
+          "text": "No “Phantom Scrolling”",
+          "status": "running",
+          "note": "No wandering aimlessly on the internet or any social media without a clear goal in mind"
+        },
+        {
+          "change": "added",
+          "text": "Time Management",
+          "status": "running",
+          "note": "Checking notifications 2-3x a day with a 10 minute limit"
+        }
+      ]
+    },
+    {
+      "name": "Foundations",
+      "items": [
+        {
+          "change": "changed",
+          "text": "Low sugar diet",
+          "status": "changed",
+          "note": "Raised to under 35g/day, since natural sugars like milk count too"
+        },
+        {
+          "change": "changed",
+          "text": "Adequate Omega 3 intake",
+          "status": "changed",
+          "note": "A can of sardines every other day, then a supplement (~850mg EPA a day), later lowered to ~500mg"
+        }
+      ]
+    },
+    {
+      "name": "Alertness Levers",
+      "items": [
+        {
+          "change": "changed",
+          "text": "NSDR",
+          "status": "changed",
+          "note": "Moved to right before my first work session"
+        }
+      ]
+    }
+  ]
+}

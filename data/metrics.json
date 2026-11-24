@@ -1,6 +1,6 @@
 {
   "startDate": "2026-09-01",
-  "lastUpdated": "2026-11-19",
+  "lastUpdated": "2026-11-23",
   "entries": [
     {
       "day": 1,
@@ -429,6 +429,13 @@
       "focusMinutes": 45
     },
     {
+      "day": 61,
+      "date": "2026-10-31",
+      "digitSpan": null,
+      "pvtRt": null,
+      "focusMinutes": 60
+    },
+    {
       "day": 62,
       "date": "2026-11-01",
       "digitSpan": null,
@@ -560,6 +567,34 @@
       "digitSpan": 10,
       "pvtRt": 216,
       "focusMinutes": 160
+    },
+    {
+      "day": 81,
+      "date": "2026-11-20",
+      "digitSpan": 10.6,
+      "pvtRt": 220,
+      "focusMinutes": 85
+    },
+    {
+      "day": 82,
+      "date": "2026-11-21",
+      "digitSpan": null,
+      "pvtRt": null,
+      "focusMinutes": 60
+    },
+    {
+      "day": 83,
+      "date": "2026-11-22",
+      "digitSpan": 10.3,
+      "pvtRt": 218,
+      "focusMinutes": 100
+    },
+    {
+      "day": 84,
+      "date": "2026-11-23",
+      "digitSpan": 11,
+      "pvtRt": 220,
+      "focusMinutes": 170
     }
   ]
 }

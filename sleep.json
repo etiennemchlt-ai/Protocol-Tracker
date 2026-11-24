@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-07",
+  "lastUpdated": "2026-11-24",
   "categories": [
     {
       "name": "General",
@@ -32,7 +32,7 @@
         {
           "text": "Morning sunlight",
           "status": "running",
-          "note": "2-10 min, as soon after waking as possible"
+          "note": "As soon after waking as possible"
         },
         {
           "text": "Sunlamp when it's dark out",
@@ -45,10 +45,6 @@
         },
         {
           "text": "Do deep focus work in this phase",
-          "status": "running"
-        },
-        {
-          "text": "Caffeine and cold exposure done in this phase",
           "status": "running"
         }
       ]

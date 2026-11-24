@@ -169,24 +169,9 @@
           "note": "When needed"
         },
         {
-          "text": "Do something harder when procrastinating",
+          "text": "Morning exercise",
           "status": "running",
-          "note": "When needed"
-        },
-        {
-          "text": "Morning exercise before deep focus work",
-          "status": "running",
-          "note": "Every morning, before focus work"
-        }
-      ]
-    },
-    {
-      "name": "Habit Formation",
-      "items": [
-        {
-          "text": "Visualization tool",
-          "status": "dropped",
-          "note": "Not used in regards to focus"
+          "note": "Every morning"
         }
       ]
     }

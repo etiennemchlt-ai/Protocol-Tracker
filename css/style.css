@@ -196,10 +196,9 @@ details[open] > .version-summary::before {
 }
 
 /* ==================================================================
-   Protocol column — "Protocols I've learned about" on top, then the
-   Sleep and Learning learned-about dropdowns, all at this column's fixed width (see
-   .secondary-panel below). Sits between the versions column and the
-   metrics, at the same top height.
+   Protocol column — the Sleep and Learning learned-about dropdowns, at
+   this column's fixed width (see .secondary-panel below). Sits to the
+   right of the metrics, at the same top height.
    ================================================================== */
 
 #protocol-column {
@@ -430,6 +429,48 @@ details[open] > .version-summary::before {
   text-decoration: line-through;
   text-decoration-color: rgba(255, 255, 255, 0.25);
 }
+
+/* Protocol versions column. V1: green dots, except its Dropped Protocols
+   group (gray dot, dimmed text). Change lists (V2+): a small tag before
+   the name, and the tag and dot are green (added), blue (changed) or red
+   (dropped). Nothing is crossed out. */
+#versions-column .protocol-status-dot {
+  background: var(--good);
+  box-shadow: 0 0 6px 0 var(--good);
+}
+
+#versions-column .protocol-item-text {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+#versions-column .protocol-item.status-dropped .protocol-status-dot {
+  background: var(--text-muted);
+  box-shadow: none;
+}
+
+#versions-column .protocol-item.status-dropped .protocol-item-text {
+  color: var(--text-secondary);
+}
+
+.protocol-change-tag {
+  margin-right: 7px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+
+#versions-column .protocol-item.change-added .protocol-status-dot { background: var(--good); box-shadow: 0 0 6px 0 var(--good); }
+#versions-column .protocol-item.change-changed .protocol-status-dot { background: var(--cat-1); box-shadow: 0 0 6px 0 var(--cat-1); }
+#versions-column .protocol-item.change-dropped .protocol-status-dot { background: var(--bad); box-shadow: 0 0 6px 0 var(--bad); }
+#versions-column .protocol-item[class*="change-"] .protocol-item-text { color: var(--text-primary); }
+
+.base-caption { margin: 0 0 10px; }
+.change-added .protocol-change-tag { color: var(--good); }
+.change-changed .protocol-change-tag { color: var(--cat-1); }
+.change-dropped .protocol-change-tag { color: var(--bad); }
 
 .protocol-item-note {
   margin-top: 2px;

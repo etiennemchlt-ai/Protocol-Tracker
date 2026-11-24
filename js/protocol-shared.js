@@ -8,7 +8,11 @@ const STATUS_LABEL = {
   running: 'Running',
   dropped: 'Dropped',
   'not-started': 'Not started',
+  // In a version's change list: the item's amount or timing changed.
+  'changed': 'Changed',
 };
+
+const CHANGE_LABEL = { added: 'Added', changed: 'Changed', dropped: 'Dropped' };
 
 // Only Work Sessions uses this — an item's optional "phase" field groups it
 // under a Before/During/After sub-header, in this fixed order. A category
@@ -61,6 +65,10 @@ function renderItem(item) {
 
   const li = document.createElement('li');
   li.className = `protocol-item status-${status}`;
+  // In a version's change list, "change" (added / changed / dropped) shows
+  // as a small colored tag before the name, and colors the dot.
+  const change = CHANGE_LABEL[item.change] ? item.change : null;
+  if (change) li.classList.add(`change-${change}`);
   // Hover tooltip for anything with a note — a quick way to see it without
   // needing extra vertical space for the small text below to wrap nicely.
   if (item.note) li.title = item.note;
@@ -78,7 +86,13 @@ function renderItem(item) {
 
   const text = document.createElement('span');
   text.className = 'protocol-item-text';
-  text.textContent = item.text;
+  if (change) {
+    const tag = document.createElement('span');
+    tag.className = 'protocol-change-tag';
+    tag.textContent = CHANGE_LABEL[change];
+    text.appendChild(tag);
+  }
+  text.appendChild(document.createTextNode(item.text));
   line.appendChild(text);
 
   body.appendChild(line);
