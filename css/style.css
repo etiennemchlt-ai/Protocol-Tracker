@@ -781,7 +781,8 @@ details[open] > .version-summary::before {
 /* ==================================================================
    Protocol map (far-left column, see js/protocol.js). Rows are
    protocols, columns are versions. Dots: gray = doing it, no change;
-   green = added; blue = changed; red ✕ = dropped; hollow = never used.
+   green = added or reintroduced; blue = changed; red ✕ = dropped;
+   faded ✕ = still dropped; hollow = never used.
    Dots are big and react on hover so people try hovering them; the
    note shows in .pmap-tip. Rows not running in the latest version are
    dimmed.
@@ -901,7 +902,8 @@ details[open] > .version-summary::before {
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
-.pmap-dot.kind-added::before {
+.pmap-dot.kind-added::before,
+.pmap-dot.kind-reintroduced::before {
   background: var(--good);
   box-shadow: 0 0 7px 0 rgba(47, 191, 63, 0.55);
 }
@@ -917,12 +919,18 @@ details[open] > .version-summary::before {
 }
 
 /* Dropped: a red ✕ instead of a dot. */
-.pmap-dot.kind-dropped::before {
+.pmap-dot.kind-dropped::before,
+.pmap-dot.kind-still::before {
   inset: 7px;
   border-radius: 0;
   background:
     linear-gradient(45deg, transparent 43%, var(--bad) 43%, var(--bad) 57%, transparent 57%),
     linear-gradient(-45deg, transparent 43%, var(--bad) 43%, var(--bad) 57%, transparent 57%);
+}
+
+/* Still dropped from an earlier version: the same ✕, faded. */
+.pmap-dot.kind-still::before {
+  opacity: 0.45;
 }
 
 .pmap-dot:hover::before,
@@ -931,9 +939,9 @@ details[open] > .version-summary::before {
   transform: scale(1.3);
 }
 
-.pmap-dot:not(.kind-dropped):hover::before,
-.pmap-dot:not(.kind-dropped):focus-visible::before,
-.pmap-dot.is-pinned:not(.kind-dropped)::before {
+.pmap-dot:not(.kind-dropped):not(.kind-still):hover::before,
+.pmap-dot:not(.kind-dropped):not(.kind-still):focus-visible::before,
+.pmap-dot.is-pinned:not(.kind-dropped):not(.kind-still)::before {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14);
 }
 
@@ -965,9 +973,11 @@ details[open] > .version-summary::before {
   color: var(--text-muted);
 }
 
-.pmap-tip-head.kind-added { color: var(--good); }
+.pmap-tip-head.kind-added,
+.pmap-tip-head.kind-reintroduced { color: var(--good); }
 .pmap-tip-head.kind-changed { color: var(--cat-1); }
-.pmap-tip-head.kind-dropped { color: var(--bad); }
+.pmap-tip-head.kind-dropped,
+.pmap-tip-head.kind-still { color: var(--bad); }
 
 .pmap-tip-name {
   margin-top: 2px;

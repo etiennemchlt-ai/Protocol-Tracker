@@ -4,9 +4,11 @@
 //   used in a "Never Used" group at the bottom.
 // - Each later file (protocol-v2.json, ...) lists only what changed:
 //   "change" is added / changed / dropped, with the note saying how or why.
+//   ("same" keeps the gray dot but gives it an updated note.)
 // A row's dot in each version column: gray = doing it, no change; green =
-// added; blue = changed; red ✕ = dropped; hollow = never used. After a drop
-// the row's later cells are empty. Hover (or tap) a dot to see its note.
+// added (or reintroduced after a drop); blue = changed; red ✕ = dropped;
+// faded ✕ = still dropped; hollow = never used. Hover (or tap) a dot to see
+// its note.
 // Items are matched across versions by their exact "text".
 // To add a version: add its file to VERSIONS.
 
@@ -15,15 +17,18 @@ import { renderNote } from './protocol-shared.js';
 const VERSIONS = [
   { url: 'protocol-base.json', label: 'V1', days: 'Days 0-30' },
   { url: 'protocol-v2.json', label: 'V2', days: 'Days 30-60' },
-  { url: 'protocol-v3.json', label: 'V3', days: 'Days 60-90' },
+  { url: 'protocol-v3.json', label: 'V3', days: 'Days 60-84' },
+  { url: 'protocol-v4.json', label: 'V4', days: 'Days 84-90' },
 ];
 
 const KIND_LABEL = {
   base: 'Started',
   same: 'No change',
   added: 'Added',
+  reintroduced: 'Reintroduced',
   changed: 'Changed',
   dropped: 'Dropped',
+  still: 'Still dropped',
   never: 'Never used',
 };
 
@@ -59,17 +64,23 @@ function buildRows(files) {
   });
 
   // Fill the versions where an item wasn't mentioned: still running (gray,
-  // carrying its latest note) until it's dropped, then empty.
+  // carrying its latest note), or still dropped (faded ✕). "Added" again
+  // after a drop is "reintroduced".
   rowsByText.forEach((row) => {
     let last = null;
     for (let vi = 0; vi < files.length; vi += 1) {
-      if (row.cells[vi]) last = row.cells[vi];
-      else if (last && last.kind !== 'dropped' && last.kind !== 'never') {
+      const cell = row.cells[vi];
+      if (cell) {
+        if (cell.kind === 'added' && last && last.kind === 'dropped') cell.kind = 'reintroduced';
+        last = cell;
+      } else if (last && last.kind === 'dropped') {
+        row.cells[vi] = { kind: 'still', item: last.item };
+      } else if (last && last.kind !== 'never') {
         row.cells[vi] = { kind: 'same', item: last.item };
       }
     }
     const final = row.cells[files.length - 1];
-    row.inactive = !final || final.kind === 'dropped' || final.kind === 'never';
+    row.inactive = !final || ['dropped', 'still', 'never'].includes(final.kind);
   });
 
   return cats.filter((c) => c.rows.length);

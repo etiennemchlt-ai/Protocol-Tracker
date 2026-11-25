@@ -1,0 +1,45 @@
+{
+  "lastUpdated": "2026-11-25",
+  "categories": [
+    {
+      "name": "Personally Implemented",
+      "items": [
+        {
+          "change": "added",
+          "text": "Dopamine Detox",
+          "status": "running",
+          "note": "See day 84 for more info"
+        },
+        {
+          "change": "same",
+          "text": "Prioritize Focus",
+          "status": "running",
+          "note": "Focus right after morning exercise and cold exposure, first thing after school, and as often as possible"
+        }
+      ]
+    },
+    {
+      "name": "Alertness Levers",
+      "items": [
+        {
+          "change": "changed",
+          "text": "NSDR",
+          "status": "changed",
+          "note": "Now only when needed"
+        },
+        {
+          "change": "added",
+          "text": "Cold exposure",
+          "status": "running",
+          "note": "Every morning, after exercise and before focusing"
+        },
+        {
+          "change": "added",
+          "text": "Morning exercise",
+          "status": "running",
+          "note": "Every morning, before cold exposure and focusing"
+        }
+      ]
+    }
+  ]
+}
